@@ -1,5 +1,91 @@
+┌──(mikey㉿kali)-[~/rabbit]
+└─$ nmap -sC -sV -p 1-1000 10.10.40.193
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-06-17 20:07 IST
+Stats: 0:00:06 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
+Connect Scan Timing: About 14.63% done; ETC: 20:07 (0:00:35 remaining)
+Stats: 0:00:33 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
+Connect Scan Timing: About 56.50% done; ETC: 20:08 (0:00:25 remaining)
+Stats: 0:00:34 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
+Connect Scan Timing: About 57.10% done; ETC: 20:08 (0:00:26 remaining)
+Stats: 0:01:16 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
+Service scan Timing: About 40.00% done; ETC: 20:08 (0:00:11 remaining)
+Stats: 0:01:22 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
+Service scan Timing: About 80.00% done; ETC: 20:08 (0:00:03 remaining)
+Stats: 0:01:22 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
+Service scan Timing: About 100.00% done; ETC: 20:08 (0:00:00 remaining)
+Stats: 0:01:27 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE Timing: About 99.56% done; ETC: 20:08 (0:00:00 remaining)
+Stats: 0:01:29 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE Timing: About 99.71% done; ETC: 20:08 (0:00:00 remaining)
+Stats: 0:01:29 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE Timing: About 99.71% done; ETC: 20:08 (0:00:00 remaining)
+Stats: 0:01:40 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE Timing: About 88.64% done; ETC: 20:08 (0:00:00 remaining)
+Stats: 0:01:41 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE Timing: About 88.64% done; ETC: 20:08 (0:00:00 remaining)
+Nmap scan report for 10.10.40.193
+Host is up (0.47s latency).
+Not shown: 994 closed tcp ports (conn-refused)
+PORT    STATE    SERVICE     VERSION
+6/tcp   filtered unknown
+22/tcp  open     ssh         OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 5e:27:8f:48:ae:2f:f8:89:bb:89:13:e3:9a:fd:63:40 (RSA)
+|   256 f4:fe:0b:e2:5c:88:b5:63:13:85:50:dd:d5:86:ab:bd (ECDSA)
+|_  256 82:ea:48:85:f0:2a:23:7e:0e:a9:d9:14:0a:60:2f:ad (ED25519)
+111/tcp open     rpcbind     2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|   100000  3,4          111/udp6  rpcbind
+|   100003  3           2049/udp   nfs
+|   100003  3           2049/udp6  nfs
+|   100003  3,4         2049/tcp   nfs
+|   100003  3,4         2049/tcp6  nfs
+|   100005  1,2,3      38138/udp   mountd
+|   100005  1,2,3      38319/tcp   mountd
+|   100005  1,2,3      38570/udp6  mountd
+|   100005  1,2,3      40475/tcp6  mountd
+|   100021  1,3,4      37650/udp   nlockmgr
+|   100021  1,3,4      38649/tcp   nlockmgr
+|   100021  1,3,4      45825/tcp6  nlockmgr
+|   100021  1,3,4      60521/udp6  nlockmgr
+|   100227  3           2049/tcp   nfs_acl
+|   100227  3           2049/tcp6  nfs_acl
+|   100227  3           2049/udp   nfs_acl
+|_  100227  3           2049/udp6  nfs_acl
+139/tcp open     netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp open     netbios-ssn Samba smbd 4.7.6-Ubuntu (workgroup: WORKGROUP)
+873/tcp open     rsync       (protocol version 31)
+Service Info: Host: VULNNET-INTERNAL; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
-Internal Thm vulnnet
+Host script results:
+|_clock-skew: mean: -39m58s, deviation: 1h09m15s, median: 0s
+|_nbstat: NetBIOS name: VULNNET-INTERNA, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   3.1.1: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2022-06-17T14:38:29
+|_  start_date: N/A
+| smb-os-discovery: 
+|   OS: Windows 6.1 (Samba 4.7.6-Ubuntu)
+|   Computer name: vulnnet-internal
+|   NetBIOS computer name: VULNNET-INTERNAL\x00
+|   Domain name: \x00
+|   FQDN: vulnnet-internal
+|_  System time: 2022-06-17T16:38:29+02:00
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 101.22 seconds
+
 
 
 
@@ -46,8 +132,21 @@ cat servid
                 11309648 blocks of size 1024. 3277360 blocks available
 smb: \temp\> get services.txt
 getting file \temp\services.txt of size 38 as services.txt (0.0 KiloBytes/sec) (average 0.0 KiloBytes/sec)
+        
+        
+┌──(mikey㉿kali)-[~/rabbit]
+└─$ sudo mount -t nfs 10.10.40.193:  /tmp 
+
             
-                           
+ ──(mikey㉿kali)-[/tmp/opt/conf/redis]
+└─$ cat redis.conf | grep -i password
+# 2) No password is configured.
+# If the master is password protected (using the "requirepass" configuration
+# masterauth <master-password>
+# Require clients to issue AUTH <PASSWORD> before processing any other
+# 150k passwords per second against a good box. This means that you should
+# use a very strong password otherwise it will be very easy to break.
+                          
                            
 requirepass "B65Hx562F@ggAZ@F"
 masterauth <master-password>
