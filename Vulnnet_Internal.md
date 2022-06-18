@@ -93,7 +93,7 @@ requirepass "B65Hx562F@ggAZ@F"
 2) "QXV0aG9yaXphdGlvbiBmb3IgcnN5bmM6Ly9yc3luYy1jb25uZWN0QDEyNy4wLjAuMSB3aXRoIHBhc3N3b3JkIEhjZzNIUDY3QFRXQEJjNzJ2Cg=="
 3) "QXV0aG9yaXphdGlvbiBmb3IgcnN5bmM6Ly9yc3luYy1jb25uZWN0QDEyNy4wLjAuMSB3aXRoIHBhc3N3b3JkIEhjZzNIUDY3QFRXQEJjNzJ2Cg=="
 
-┌──(mikey㉿kali)-[~/rabbit]
+┌──(mikey㉿kali)[/rabbit]
 └─$echo QXV0aG9yaXphdGlvbiBmb3IgcnN5bmM6Ly9yc3luYy1jb25uZWN0QDEyNy4wLjAuMSB3aXRoIHBhc3N3b3JkIEhjZzNIUDY3QFRXQEJjNzJ2Cg== | base64 -d
 Authorization for rsync://rsync-connect@127.0.0.1 with password Hcg3HP67@TW@Bc72v
 ┌──(mikey㉿kali)-[~/rabbit]
