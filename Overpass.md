@@ -56,15 +56,19 @@ But it is protected by passphrase let's try to crack it with john using rockyou.
 Cracked ,we get james13 passphrase.
 
 ![](https://i.imgur.com/wdzuNaX.png)
+
 #### User.txt is thm{65c1aaf000506e56996822c6281e6bf7}
 
 ## Privilege Escalation
 
 Let's check crontab 
+
 ![](https://i.imgur.com/u9jrEPn.png)
+
 It is executing buildscript.sh. Check if we can change server and execute our script for root access.
 
 ![](https://i.imgur.com/Gr4BOA3.png)
+
 /etc/hosts have writing access by user .
 
 
