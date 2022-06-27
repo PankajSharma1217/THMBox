@@ -60,10 +60,13 @@ Cracked ,we get james13 passphrase.
 ## Privilege Escalation
 
 Let's check crontab 
+
 ![](https://i.imgur.com/u9jrEPn.png)
+
 It is executing buildscript.sh. Check if we can change server and execute our script for root access.
 
 ![](https://i.imgur.com/Gr4BOA3.png)
+
 /etc/hosts have writing access by user .
 
 We can see in /etc/hosts it is set to localhost let's change it with our ip .
