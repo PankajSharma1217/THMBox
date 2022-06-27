@@ -1,16 +1,16 @@
 # Overpass
 
+
 ## Nmap
 PORT   STATE SERVICE REASON  VERSION
 22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
-
 80/tcp open  http    syn-ack Golang net/http server
 
 ## Gobuster
 
 ##### Gobuster v2.0.1              OJ Reeves (@TheColonial)
 =====================================================
-##### [+] Mode         : dir
+##### [+] Mode     : dir
 ##### Url/Domain   : http://10.10.198.246/
 ##### Threads      : 100
 ##### Wordlist     : /home/mikey/wordlists/common.txt
@@ -61,16 +61,24 @@ Cracked ,we get james13 passphrase.
 ## Privilege Escalation
 
 Let's check crontab 
-
 ![](https://i.imgur.com/u9jrEPn.png)
-
 It is executing buildscript.sh. Check if we can change server and execute our script for root access.
 
 ![](https://i.imgur.com/Gr4BOA3.png)
-
 /etc/hosts have writing access by user .
 
+
+![](https://i.imgur.com/KyQeJe3.png)
+
 We can see in /etc/hosts it is set to localhost let's change it with our ip .
+
+
+![](https://i.imgur.com/m5yBLB8.png)
+
+we get root access.
+
+![](https://i.imgur.com/YJNrZ79.png)
+### ROOT.TXT is thm{7f336f8c359dbac18d54fdd64ea753bb}
 
 
 
