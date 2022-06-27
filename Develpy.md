@@ -10,13 +10,16 @@
 ## Netcat
    
    lets connect with port 10000 
+   
    ![](https://i.imgur.com/LSKr3Lw.png)
+   
 
 so a python script is running asking for a input.
 it is calculating given equation hinting that there is input vulnerbility,read more at https://intx0x80.blogspot.com/2017/05/python-input-vulnerability_25.html
 
 ## Reverse_Shell
 so let's create a payload to spawn a shell
+
 ![](https://i.imgur.com/blvUrBn.png)
 
 Here we go we spawn a reverse shell
